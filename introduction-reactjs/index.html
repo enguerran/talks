@@ -56,25 +56,47 @@
 				<!-- http://facebook.github.io/react/blog/2013/06/05/why-react.html -->
 
 				<section>
-					<img src="images/47701432.jpg" alt="What if I told you javascript can be serious engineering?">
-					<h3>Audience overview</h3>
-					<ul>
-						<li class="fragment">Who does javascript?</li>
-						<li class="fragment">Who knows React.js?</li>
-						<li class="fragment">Who works with React.js?</li>
-					</ul>
+          <section>
+            <img src="images/47701432.jpg" alt="What if I told you javascript can be serious engineering?">
+            <h3>Qui êtes-vous ?</h3>
+            <ul>
+              <li class="fragment">Qui fait du javascript ?</li>
+              <li class="fragment">Tout le monde connait React ? <span class="nb">releaseDate > 6</span></li>
+              <li class="fragment">Qui développe actuellement un projet avec React ?</li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Good code</h3>
+            <img src="images/wtfm.jpg" alt="Code Quality">
+            <p>Qui a déjà galéré sur de la synchro d'UI et de modèle ?</p>
+          </section>
 				</section>
 
 				<section>
-					<h3>Why React?</h3>
-					<h6>Complexity</h6>
-					<ul>
-						<li>HTML is declarative<span class="fragment">: <span class="nb">React components</span></span></li>
-						<li>DOM Access is expensive<span class="fragment">: <span class="nb">virtual DOM</span></span></li>
-						<li>Frameworks are traps<span class="fragment">: <span class="nb">React is a library</span></span></li>
-					</ul>
+          <section>
+            <h3>Pourquoi React ?</h3>
+            <img width="150px" src="images/Screenshot from 2014-10-30 15:37:12.png" alt="Notification facebook">
+          </section>
+
+          <section>
+            <h3>Pourquoi React ?</h3>
+            <ul>
+              <li>Composition et réutilisation<span class="fragment">: <span class="nb">React components</span></span></li>
+              <li>Accès au DOM coûteux<span class="fragment">: <span class="nb">virtual DOM</span></span></li>
+              <li>Frameworks = pièges<span class="fragment">: <span class="nb">React est une bibliothèque</span></span></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Framework vs. library 101</h3>
+            <img width="300" src="images/Bt8NEveIcAEsTqH.png" alt="Libraries vs Frameworks">
+            <p>"your code calls a library, a framework calls your code"</p>
+          </section>
 				</section>
 
+
+<!--
 				<section>
 					<section data-transition="linear">
 						<h3>Example</h3>
@@ -114,11 +136,11 @@ if(count === 0) {
 						<pre class="stretch"><code class="language-javascript">
 render: function() {
 	if(count === 0) {
-		return (<div class="notification"></div>);
-	} else if(count <= 99) {
-		return (<div class="some notification">{count}</div>);
+		return (&lt;div class="notification"&gt;&lt;/div&gt;);
+	} else if(count &lt;= 99) {
+		return (&lt;div class="some notification"&gt;{count}&lt;/div&gt;);
 	} else {
-		return (<div class="some notification onfire">99+</div>);
+		return (&lt;div class="some notification onfire"&gt;99+&lt;/div&gt;);
 	}
 }
 						</code></pre>
@@ -126,19 +148,49 @@ render: function() {
 					</section>
 
 				</section>
+-->
 
         <section>
           <section data-transition="linear">
-            <h3>Thinking in React</h3>
-            <h6>Components</h6>
+            <h3>Comment ça marche ?</h3>
+            <p><a href="//facebook.github.io/react/docs/thinking-in-react.html">Thinking in React</a></p>
             <!-- <a href="http://facebook.github.io/react/docs/thinking-in-react.html">source</a> -->
-            <img src="images/thinking-in-react-components.png" alt="">
-            <p class="fragment"><span style="color: orange">FilterableProductTable</span> (contains the entirety of the example), <span style="color: darkblue">SearchBar</span> (receives all user input), <span style="color: green">ProductTable</span> (displays and filters the data collection based on user input), <span style="color: #00D8FF">ProductCategoryRow</span> (displays a heading for each category), <span style="color: red">ProductRow</span> (displays a row for each product)</p>
+            <img src="images/thinking-in-react-components.png" alt="UI as components">
+          </section>
+
+          <section>
+            <h3>Comment ça marche ?</h3>
+            <img src="images/react-structure.png" alt="Components hierarchy">
+          </section>
+
+          <section data-transition="linear">
+            <span style="color: green">ProductTable</span>
+            <pre><code class="language-javascript">
+var ProductTable = React.createClass({
+  render: function() {
+    var rows = [];
+    this.props.products.forEach(function(product) {
+      rows.push(&lt;ProductRow product={product} key={product.name} /&gt;);
+    });
+    return (
+      &lt;table&gt;
+        &lt;thead&gt;
+          &lt;tr&gt;
+            &lt;th&gt;Name&lt;/th&gt;
+            &lt;th&gt;Price&lt;/th&gt;
+          &lt;/tr&gt;
+        &lt;/thead&gt;
+        &lt;tbody&gt;{rows}&lt;/tbody&gt;
+      &lt;/table&gt;
+    );
+  }
+});
+            </code></pre>
           </section>
 
           <section data-transition="linear">
           	<span style="color: red">ProductRow</span>
-          	<pre class="stretch"><code class="language-javascript">
+          	<pre><code class="language-javascript">
 var ProductRow = React.createClass({
   render: function() {
     var name = this.props.product.stocked ?
@@ -156,37 +208,7 @@ var ProductRow = React.createClass({
 });
           	</code></pre>
           </section>
-
-          <section data-transition="linear">
-          	<span style="color: green">ProductTable</span>
-          	<pre class="stretch"><code class="language-javascript">
-var ProductTable = React.createClass({
-  render: function() {
-    var rows = [];
-    var lastCategory = null;
-    this.props.products.forEach(function(product) {
-      if (product.category !== lastCategory) {
-        rows.push(&lt;ProductCategoryRow category={product.category} key={product.category} /&gt;);
-      }
-      rows.push(&lt;ProductRow product={product} key={product.name} /&gt;);
-      lastCategory = product.category;
-    });
-    return (
-      &lt;table&gt;
-        &lt;thead&gt;
-          &lt;tr&gt;
-            &lt;th&gt;Name&lt;/th&gt;
-            &lt;th&gt;Price&lt;/th&gt;
-          &lt;/tr&gt;
-        &lt;/thead&gt;
-        &lt;tbody&gt;{rows}&lt;/tbody&gt;
-      &lt;/table&gt;
-    );
-  }
-});
-          	</code></pre>
-          </section>
-
+<!--
           <section data-transition="linear">
             <h3>Components lifecycle</h3>
             <ul>
@@ -199,17 +221,17 @@ var ProductTable = React.createClass({
             	<li class="fragment nb">componentWillReceiveProps</li>
             </ul>
           </section>
-
+ -->
           <section data-transition="linear">
-            <h3>States vs Props</h3>
+            <h3>Props & States</h3>
             <h6>Props</h6>
-            <p>Props are components configuration</p>
-            <p>Props are inherited and immutable</p>
-            <p>A component gives its children's Props</p>
+            <p>Configuration des composants</p>
+            <p>Hérités donc immuables</p>
+            <p>Un component donne les props aux enfants</p>
             <h6>State</h6>
-            <p>States change over the time</p>
-            <p>A component manages its own state internally</p>
-            <p>It's a serializable representation of a snapshot</p>
+            <p>States changent au cours du temps</p>
+            <p>Un component gère son propre état</p>
+            <p>Représentation sérializable, un snaptshot</p>
           </section>
 
         </section>
@@ -219,56 +241,49 @@ var ProductTable = React.createClass({
 			    <section data-transition="linear">
 		        <h3>Virtual DOM</h3>
 		        <!-- <a href="http://jlongster.com/Removing-User-Interface-Complexity,-or-Why-React-is-Awesome">source</a> -->
-            <p>React has a virtual DOM and will only touch the real DOM when needed</p>
+            <p>React utilise un <span class="nb">virtual DOM</span> et ne va accéder au vrai DOM <span class="nb">que si nécessaire</span>.</p>
             <div class="fragment">
-	            <p>React creates a lightweight virtual DOM every time components are rendered,</p>
-	            <p>and diffs them to figure out the smallest amount of real DOM changes needed</p>
+              <p>React crée un virtual DOM <span class="nb">à chaque fois que les components sont dessinés</span> et le compare avec le précédent pour déterminer la plus légère modification à apporter au DOM.</p>
             </div>
 			    </section>
 			    <section data-transition="linear">
-		        <h3>Virtual DOM strategies</h3>
+		        <h3>Stratégies du virtual DOM</h3>
 		        <!-- <a href="http://calendar.perfplanet.com/2013/diff/">source</a> -->
 		        <ul>
-	            <li>Diff algorithm</li>
-	            <li>Keys in list</li>
-	            <li>Components better than div</li>
-	            <li>Events delegation</li>
-	            <li>Batching</li>
+	            <li>Heuristique de diff d'arbres</li>
+	            <li>Utilisation de clef et d'ID</li>
+	            <li>Nommage des noeuds plutôt que des divs</li>
+	            <li>Délégation d'évènements</li>
+	            <li>Traitement par lot (batching)</li>
 		        </ul>
 			    </section>
 				</section>
 
 				<section>
-					<h3>It is a library</h3>
-					<p>AngularJS and React
-						<a href="http://www.mono-software.com/blog/post/Mono/242/Improving-AngularJS-long-list-rendering-performance-using-ReactJS/" target="_blank">➥</a>
-					</p>
-					<p>Backbone and React
-						<a href="http://www.thomasboyt.com/2013/12/17/using-reactjs-as-a-backbone-view.html" target="_blank">➥</a>
-					</p>
-					<p>Ember and React
-						<a href="http://discuss.emberjs.com/t/can-reactjs-be-used-as-a-view-within-emberjs/3470/4" target="_blank">➥</a>
-					</p>React Elements: better integration with third-party languages
-					<p><a href="http://facebook.github.io/react/blog/2014/10/14/introducing-react-elements.html">➥</a></p>
+					<h3>Une bibliothèque</h3>
+					<p>React + (<a href="http://www.mono-software.com/blog/post/Mono/242/Improving-AngularJS-long-list-rendering-performance-using-ReactJS/" target="_blank">Angular</a> || <a href="http://www.thomasboyt.com/2013/12/17/using-reactjs-as-a-backbone-view.html" target="_blank">Backbone</a> ||
+						<a href="http://discuss.emberjs.com/t/can-reactjs-be-used-as-a-view-within-emberjs/3470/4" target="_blank">Ember</a>)</p>
+					<p><span class="nb">React Elements</span> : intégration avec les bibliothèques tierces <a href="http://facebook.github.io/react/blog/2014/10/14/introducing-react-elements.html">➥</a></p>
+          <p>Architecture <span class="nb">flux</span> <a href="http://facebook.github.io/flux/docs/overview.html">➥</a></p>
 				</section>
 
 				<section>
 					<section data-transition="linear">
 						<img src="images/01074-2.jpg" alt="Guinness Time">
-						<h1>Thank you</h1>
+						<h1>Merci</h1>
 					</section>
 
 					<section data-transition="linear">
 						<h5>Resources</h5>
 						<ul>
-							<li>React Blog <a href="http://facebook.github.io/react/blog/">➥</a></li>
-							<li>Introduction à ReactJS <a href="http://putaindecode.fr/posts/js/introduction-a-reactjs/">➥</a></li>
-							<li>ReactJS by Adam Solove <a href="http://vimeo.com/92687646">➥</a></li>
-							<li>Steven Luscher: Decomplexifying Code with React <a href="https://www.youtube.com/watch?v=rI0GQc__0SM">➥</a></li>
-							<li>Removing User Interface Complexity, or Why React is Awesome <a href="http://jlongster.com/Removing-User-Interface-Complexity,-or-Why-React-is-Awesome">➥</a></li>
-							<li>React.js Internals with Nick Niemeir <a href="http://youtu.be/FAgSdSikSCc">➥</a></li>
-							<li>React's diff algorithm, Christopher Chedeau <a href="http://calendar.perfplanet.com/2013/diff/">➥</a></li>
-							<li>React.js: Secrets of the Virtual DOM <a href="http://www.futureinsights.com/home/reactjs-secrets-of-the-virtual-dom.html">➥</a></li>
+							<li>React Blog, par <span class="nb">Facebook team</span> <a href="http://facebook.github.io/react/blog/">➥</a></li>
+							<li>Introduction à ReactJS, par <span class="nb">putaindecode.fr</span> <a href="http://putaindecode.fr/posts/js/introduction-a-reactjs/">➥</a></li>
+							<li>ReactJS, par <span class="nb">Adam Solove</span> <a href="http://vimeo.com/92687646">➥</a></li>
+							<li>Decomplexifying Code with React, par <span class="nb">Steven Luscher</span><a href="https://www.youtube.com/watch?v=rI0GQc__0SM">➥</a></li>
+							<li>Removing User Interface Complexity, or Why React is Awesome, par <span class="nb">James Long</span> <a href="http://jlongster.com/Removing-User-Interface-Complexity,-or-Why-React-is-Awesome">➥</a></li>
+							<li>React.js Internals, par <span class="nb">Nick Niemeir</span> <a href="http://youtu.be/FAgSdSikSCc">➥</a></li>
+							<li>React's diff algorithm, par <span class="nb">Christopher Chedeau</span> <a href="http://calendar.perfplanet.com/2013/diff/">➥</a></li>
+							<li>React.js: Secrets of the Virtual DOM, par <span class="nb">Pete Hunt</span> <a href="http://www.futureinsights.com/home/reactjs-secrets-of-the-virtual-dom.html">➥</a></li>
 						</ul>
 					</section>
 				</section>
