@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Introduction to React.js</title>
+
+		<meta name="description" content="An introduction to React.js">
+		<meta name="author" content="Enguerran Colson">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/react.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="plugin/prism/prism.css">
+
+		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+		<script>
+			if( window.location.search.match( /print-pdf/gi ) ) {
+				var link = document.createElement( 'link' );
+				link.rel = 'stylesheet';
+				link.type = 'text/css';
+				link.href = 'css/print/pdf.css';
+				document.getElementsByTagName( 'head' )[0].appendChild( link );
+			}
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+			<div class="slides">
+
+				<section>
+					<div class="react">
+						<h1>React.js</h1>
+						<img class="nav-logo" src="images/logo.svg" width="128" height="128">
+					</div>
+					<h3>Introduction</h3>
+					<p>twitter.com/<a href="//twitter.com/ticabri">ticabri</a></p>
+					<p>github.com/<a href="//github.com/enguerran">enguerran</a></p>
+					<p>Enguerran <a href="//blog.ticabri.com">Colson</a></p>
+				</section>
+
+				<!-- Resources -->
+				<!-- http://facebook.github.io/react/blog/2013/06/05/why-react.html -->
+
+				<section>
+					<img src="images/47701432.jpg" alt="What if I told you javascript can be serious engineering?">
+					<h3>Audience overview</h3>
+					<ul>
+						<li class="fragment">Who does javascript?</li>
+						<li class="fragment">Who knows React.js?</li>
+						<li class="fragment">Who works with React.js?</li>
+					</ul>
+				</section>
+
+				<section>
+					<h3>Why React?</h3>
+					<h6>Complexity</h6>
+					<ul>
+						<li>HTML is declarative<span class="fragment">: <span class="nb">React components</span></span></li>
+						<li>DOM Access is expensive<span class="fragment">: <span class="nb">virtual DOM</span></span></li>
+						<li>Frameworks are traps<span class="fragment">: <span class="nb">React is a library</span></span></li>
+					</ul>
+				</section>
+
+				<section>
+					<section>
+						<h3>Example</h3>
+						<h6>notification states and transitions</h6>
+						<p>Three states → Six transitions</p>
+						<p>N states → (N² - N) transitions</p>
+						<img src="images/notification.png" alt="3 states">
+						<p>
+							<a href="sample.html">sample</a>
+						</p>
+					</section>
+
+					<section>
+						<h3>Imperative Programming</h3>
+						<h6>Dummy implementation</h6>
+						<pre class="language-javascript"><code>if(count > 99) {
+  if(!isOnFire()) addFire();
+} else {
+  if(isOnFire()) removeFire();
+}
+if(count === 0) {
+  if(hasSome()) removeSome();
+  notification.innerHTML = '';
+} else {
+  if(!hasSome()) addSome(count);
+  var countText = count > 99 ? '99+' : count.toString();
+  notification.innerHTML = countText;
+}</code></pre>
+						<p>Describes computation in terms of statements that change a program state</p>
+					</section>
+
+					<section>
+						<h3>Declarative Programming</h3>
+						<h6>React implementation</h6>
+						<pre><code class="language-javascript">
+render: function() {
+	if(count === 0) {
+		return (<div class="notification"></div>);
+	} else if(count <= 99) {
+		return (<div class="some notification">{count}</div>);
+	} else {
+		return (<div class="some notification onfire">99+</div>);
+	}
+}
+						</code></pre>
+          	<p>We model the states and not the transitions</p>
+					</section>
+
+				</section>
+
+        <section>
+          <section>
+            <h3>Thinking in React</h3>
+            <h6>Components</h6>
+            <!-- <a href="http://facebook.github.io/react/docs/thinking-in-react.html">source</a> -->
+            <img src="images/thinking-in-react-components.png" alt="">
+            <p class="fragment"><span style="color: orange">FilterableProductTable</span> (contains the entirety of the example), <span style="color: darkblue">SearchBar</span> (receives all user input), <span style="color: green">ProductTable</span> (displays and filters the data collection based on user input), <span style="color: #00D8FF">ProductCategoryRow</span> (displays a heading for each category), <span style="color: red">ProductRow</span> (displays a row for each product)</p>
+          </section>
+
+          <section>
+          	<span style="color: red">ProductRow</span>
+          	<pre><code class="language-javascript">var ProductRow = React.createClass({
+  render: function() {
+    var name = this.props.product.stocked ?
+      this.props.product.name :
+      &lt;span style={{color: 'red'}}&gt;
+        {this.props.product.name}
+      &lt;/span&gt;;
+    return (
+    	&lt;tr&gt;
+            &lt;td&gt;{name}&lt;/td&gt;
+            &lt;td&gt;{this.props.product.price}&lt;/td&gt;
+       &lt;/tr&gt;
+    );
+  }
+});
+          	</code></pre>
+          </section>
+
+          <section>
+          	<span style="color: green">ProductTable</span>
+          	<pre><code class="language-javascript">var ProductTable = React.createClass({
+  render: function() {
+    var rows = [];
+    var lastCategory = null;
+    this.props.products.forEach(function(product) {
+      if (product.category !== lastCategory) {
+        rows.push(&lt;ProductCategoryRow category={product.category} key={product.category} /&gt;);
+      }
+      rows.push(&lt;ProductRow product={product} key={product.name} /&gt;);
+      lastCategory = product.category;
+    });
+    return (
+      &lt;table&gt;
+        &lt;thead&gt;
+          &lt;tr&gt;
+            &lt;th&gt;Name&lt;/th&gt;
+            &lt;th&gt;Price&lt;/th&gt;
+          &lt;/tr&gt;
+        &lt;/thead&gt;
+        &lt;tbody&gt;{rows}&lt;/tbody&gt;
+      &lt;/table&gt;
+    );
+  }
+});
+          	</code></pre>
+          </section>
+
+          <section>
+            <h3>Components lifecycle</h3>
+            <ul>
+            	<li>componentWillMount</li>
+            	<li>componentDidMount</li>
+            	<li>componentWillUpdate</li>
+            	<li>componentDidUpdate</li>
+            	<li>componentWillUnmount</li>
+            	<li class="fragment nb">shouldComponentUpdate</li>
+            	<li class="fragment nb">componentWillReceiveProps</li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>States vs Props</h3>
+            <h6>Props</h6>
+            <p>Props are components configuration</p>
+            <p>Props are inherited and immutable</p>
+            <p>A component gives its children's Props</p>
+            <h6>State</h6>
+            <p>States change over the time</p>
+            <p>A component manages its own state internally</p>
+            <p>It's a serializable representation of a snapshot</p>
+          </section>
+
+        </section>
+
+
+				<section>
+			    <section>
+		        <h3>Virtual DOM</h3>
+		        <!-- <a href="http://jlongster.com/Removing-User-Interface-Complexity,-or-Why-React-is-Awesome">source</a> -->
+            <p>React has a virtual DOM and will only touch the real DOM when needed</p>
+            <div class="fragment">
+	            <p>React creates a lightweight virtual DOM every time components are rendered,</p>
+	            <p>and diffs them to figure out the smallest amount of real DOM changes needed</p>
+            </div>
+			    </section>
+			    <section>
+		        <h3>Virtual DOM strategies</h3>
+		        <!-- <a href="http://calendar.perfplanet.com/2013/diff/">source</a> -->
+		        <ul>
+	            <li>Diff algorithm</li>
+	            <li>Keys in list</li>
+	            <li>Components better than div</li>
+	            <li>Events delegation</li>
+	            <li>Batching</li>
+		        </ul>
+			    </section>
+				</section>
+
+				<section>
+					<h3>It is a library</h3>
+					<p>AngularJS and React
+						<a href="http://www.mono-software.com/blog/post/Mono/242/Improving-AngularJS-long-list-rendering-performance-using-ReactJS/" target="_blank">➥</a>
+					</p>
+					<p>Backbone and React
+						<a href="http://www.thomasboyt.com/2013/12/17/using-reactjs-as-a-backbone-view.html" target="_blank">➥</a>
+					</p>
+					<p>Ember and React
+						<a href="http://discuss.emberjs.com/t/can-reactjs-be-used-as-a-view-within-emberjs/3470/4" target="_blank">➥</a>
+					</p>React Elements: better integration with third-party languages
+					<p><a href="http://facebook.github.io/react/blog/2014/10/14/introducing-react-elements.html">➥</a></p>
+				</section>
+
+				<section>
+					<section>
+						<img src="images/01074-2.jpg" alt="Guinness Time">
+						<h1>Thank you</h1>
+					</section>
+
+					<section>
+						<h5>Resources</h5>
+						<ul>
+							<li>React Blog <a href="http://facebook.github.io/react/blog/">➥</a></li>
+							<li>Introduction à ReactJS <a href="http://putaindecode.fr/posts/js/introduction-a-reactjs/">➥</a></li>
+							<li>ReactJS by Adam Solove <a href="http://vimeo.com/92687646">➥</a></li>
+							<li>Steven Luscher: Decomplexifying Code with React <a href="https://www.youtube.com/watch?v=rI0GQc__0SM">➥</a></li>
+							<li>Removing User Interface Complexity, or Why React is Awesome <a href="http://jlongster.com/Removing-User-Interface-Complexity,-or-Why-React-is-Awesome">➥</a></li>
+							<li>React.js Internals with Nick Niemeir <a href="http://youtu.be/FAgSdSikSCc">➥</a></li>
+							<li>React's diff algorithm, Christopher Chedeau <a href="http://calendar.perfplanet.com/2013/diff/">➥</a></li>
+							<li>React.js: Secrets of the Virtual DOM <a href="http://www.futureinsights.com/home/reactjs-secrets-of-the-virtual-dom.html">➥</a></li>
+						</ul>
+					</section>
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+		<script src="plugin/prism/prism.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Parallax scrolling
+				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+				// parallaxBackgroundSize: '2100px 900px',
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>

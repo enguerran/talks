@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<style>
+  .notification {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid steelblue;
+    box-sizing: border-box;
+    margin: 5px;
+  }
+  .some {
+    background-color: steelblue;
+  }
+  .onfire {
+    background-color: red;
+    border-color: red;
+  }
+  .inline {
+    display: flex;
+    flex-direciton: inline;
+    align-items: center;
+  }
+  .hidden {
+    display: none;
+  }
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+</style>
+<body>
+
+<div class="container">
+  <div>
+    <h3>Notification sample</h3>
+    <div id="anchor"></div>
+    <input type="text" id="howmany">
+    <button id="notify">notify</button>
+    <p>
+      <a href="#" id="showDetails">show details</a>
+    </p>
+  </div>
+  <div id="details" class="hidden">
+    <h3>States ⨉3 (n)</h3>
+    <div class="notification"></div>
+    <div class="some notification">42</div>
+    <div class="some notification onfire">99+</div>
+
+    <h3>Transitions ⨉6 (n²-n)</h3>
+    <div class="inline">
+      <div class="notification"></div> =>
+      <div class="some notification">42</div>
+    </div><div class="inline">
+      <div class="notification"></div> =>
+      <div class="some notification onfire">99+</div>
+    </div>
+    <div class="inline">
+      <div class="some notification onfire">99+</div> =>
+      <div class="notification"></div>
+    </div><div class="inline">
+      <div class="some notification onfire">99+</div> =>
+      <div class="some notification">42</div>
+    </div>
+    <div class="inline">
+      <div class="some notification">42</div> =>
+      <div class="some notification onfire">99+</div>
+    </div><div class="inline">
+      <div class="some notification">42</div> =>
+      <div class="notification"></div>
+    </div>
+  </div>
+
+</div>
+  <script>
+var notification = document.createElement("div");
+notification.classList.add("notification");
+
+function isOnFire() {
+  return notification.classList.contains("onfire");
+}
+
+function removeFire() {
+  notification.classList.remove("onfire");
+}
+
+function addFire() {
+  notification.classList.add("onfire");
+}
+
+function hasSome() {
+  return notification.classList.contains("some");
+}
+
+function removeSome() {
+  notification.classList.remove("some");
+}
+
+function addSome(count) {
+  notification.classList.add("some");
+}
+
+function notify(count) {
+  var count = count || 0;
+
+  if(count > 99) {
+    if(!isOnFire()) {
+      addFire();
+    }
+  } else {
+    if(isOnFire()) {
+      removeFire();
+    }
+  }
+  if(count === 0) {
+    if(hasSome()) {
+      removeSome();
+    }
+    notification.innerHTML = '';
+  } else {
+    if(!hasSome()) {
+      addSome(count);
+    }
+    var countText = count > 99 ? '99+' : count.toString();
+    notification.innerHTML = countText;
+  }
+
+  document.getElementById('anchor').appendChild(notification);
+}
+
+document.getElementById("notify").addEventListener('click', function(event) {
+  var count = Number(document.getElementById('howmany').value);
+  notify(count);
+});
+
+document.getElementById("showDetails").addEventListener('click', function(event) {
+  event.preventDefault();
+  document.getElementById("details").classList.toggle("hidden");
+});
+
+document.getElementById('anchor').appendChild(notification);
+  </script>
+</body>
+</html>
