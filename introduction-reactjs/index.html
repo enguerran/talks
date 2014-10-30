@@ -76,7 +76,7 @@
 				</section>
 
 				<section>
-					<section>
+					<section data-transition="linear">
 						<h3>Example</h3>
 						<h6>notification states and transitions</h6>
 						<p>Three states → Six transitions</p>
@@ -87,10 +87,11 @@
 						</p>
 					</section>
 
-					<section>
+					<section data-transition="linear">
 						<h3>Imperative Programming</h3>
 						<h6>Dummy implementation</h6>
-						<pre class="language-javascript"><code>if(count > 99) {
+						<pre class"stretch"><code class="language-javascript">
+if(count > 99) {
   if(!isOnFire()) addFire();
 } else {
   if(isOnFire()) removeFire();
@@ -102,14 +103,15 @@ if(count === 0) {
   if(!hasSome()) addSome(count);
   var countText = count > 99 ? '99+' : count.toString();
   notification.innerHTML = countText;
-}</code></pre>
+}
+</code></pre>
 						<p>Describes computation in terms of statements that change a program state</p>
 					</section>
 
-					<section>
+					<section data-transition="linear">
 						<h3>Declarative Programming</h3>
 						<h6>React implementation</h6>
-						<pre><code class="language-javascript">
+						<pre class="stretch"><code class="language-javascript">
 render: function() {
 	if(count === 0) {
 		return (<div class="notification"></div>);
@@ -126,7 +128,7 @@ render: function() {
 				</section>
 
         <section>
-          <section>
+          <section data-transition="linear">
             <h3>Thinking in React</h3>
             <h6>Components</h6>
             <!-- <a href="http://facebook.github.io/react/docs/thinking-in-react.html">source</a> -->
@@ -134,9 +136,10 @@ render: function() {
             <p class="fragment"><span style="color: orange">FilterableProductTable</span> (contains the entirety of the example), <span style="color: darkblue">SearchBar</span> (receives all user input), <span style="color: green">ProductTable</span> (displays and filters the data collection based on user input), <span style="color: #00D8FF">ProductCategoryRow</span> (displays a heading for each category), <span style="color: red">ProductRow</span> (displays a row for each product)</p>
           </section>
 
-          <section>
+          <section data-transition="linear">
           	<span style="color: red">ProductRow</span>
-          	<pre><code class="language-javascript">var ProductRow = React.createClass({
+          	<pre class="stretch"><code class="language-javascript">
+var ProductRow = React.createClass({
   render: function() {
     var name = this.props.product.stocked ?
       this.props.product.name :
@@ -154,9 +157,10 @@ render: function() {
           	</code></pre>
           </section>
 
-          <section>
+          <section data-transition="linear">
           	<span style="color: green">ProductTable</span>
-          	<pre><code class="language-javascript">var ProductTable = React.createClass({
+          	<pre class="stretch"><code class="language-javascript">
+var ProductTable = React.createClass({
   render: function() {
     var rows = [];
     var lastCategory = null;
@@ -183,7 +187,7 @@ render: function() {
           	</code></pre>
           </section>
 
-          <section>
+          <section data-transition="linear">
             <h3>Components lifecycle</h3>
             <ul>
             	<li>componentWillMount</li>
@@ -196,7 +200,7 @@ render: function() {
             </ul>
           </section>
 
-          <section>
+          <section data-transition="linear">
             <h3>States vs Props</h3>
             <h6>Props</h6>
             <p>Props are components configuration</p>
@@ -212,7 +216,7 @@ render: function() {
 
 
 				<section>
-			    <section>
+			    <section data-transition="linear">
 		        <h3>Virtual DOM</h3>
 		        <!-- <a href="http://jlongster.com/Removing-User-Interface-Complexity,-or-Why-React-is-Awesome">source</a> -->
             <p>React has a virtual DOM and will only touch the real DOM when needed</p>
@@ -221,7 +225,7 @@ render: function() {
 	            <p>and diffs them to figure out the smallest amount of real DOM changes needed</p>
             </div>
 			    </section>
-			    <section>
+			    <section data-transition="linear">
 		        <h3>Virtual DOM strategies</h3>
 		        <!-- <a href="http://calendar.perfplanet.com/2013/diff/">source</a> -->
 		        <ul>
@@ -249,12 +253,12 @@ render: function() {
 				</section>
 
 				<section>
-					<section>
+					<section data-transition="linear">
 						<img src="images/01074-2.jpg" alt="Guinness Time">
 						<h1>Thank you</h1>
 					</section>
 
-					<section>
+					<section data-transition="linear">
 						<h5>Resources</h5>
 						<ul>
 							<li>React Blog <a href="http://facebook.github.io/react/blog/">➥</a></li>
@@ -297,12 +301,13 @@ render: function() {
 				// Optional libraries used to extend on reveal.js
 				dependencies: [
 					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
-					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					// { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					// { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					// { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
 					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
-					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
-				]
+					// { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				],
+        margin: 0.1
 			});
 
 		</script>
