@@ -784,6 +784,59 @@ ReactDOM.render(React.createElement(reactComponent, null), mountNode);</code></p
                 </div>
               </div>
             </section>
+            <section>
+              <div data-block-id="76f2617ad83b359716f8b535e22fa4ba" style="height: auto; width: 865px; left: 48px; top: 0px;" data-block-type="text" class="sl-block">
+    <div style="z-index: 11; color: rgb(0, 216, 255);" data-placeholder-text="Text" data-placeholder-tag="p" class="sl-block-content">
+        <h2>Hierarchie de composants</h2>
+    </div>
+</div>
+<div data-block-id="e50dea3e166a067ea9e8fe7bbd9dd66a" style="width: 258.621px; height: 300px; left: 647px; top: 366px;" data-block-type="image" class="sl-block">
+    <div style="z-index: 12;" class="sl-block-content">
+        <img src="https://s3.amazonaws.com/media-p.slid.es/uploads/208928/images/2308852/thinking-in-react-components.png" data-natural-height="319" data-natural-width="275" style=""/>
+    </div>
+</div>
+<div data-block-id="bba13895af1d51cf4a02576feb9322c6" style="min-width: 30px; min-height: 30px; width: 851px; height: 182px; left: 55px; top: 140px;" data-block-type="code" class="sl-block">
+    <div data-highlight-theme="solarized-dark" style="z-index: 13; border-style: solid; border-width: 1px; border-color: rgb(0, 216, 255);" class="sl-block-content">
+        <pre><code>[
+  {category: "Sporting Goods", price: "$49.99", stocked: true, name: "Football"},
+  {category: "Sporting Goods", price: "$9.99", stocked: true, name: "Baseball"},
+  {category: "Sporting Goods", price: "$29.99", stocked: false, name: "Basketball"},
+  {category: "Electronics", price: "$99.99", stocked: true, name: "iPod Touch"},
+  {category: "Electronics", price: "$399.99", stocked: false, name: "iPhone 5"},
+  {category: "Electronics", price: "$199.99", stocked: true, name: "Nexus 7"}
+];</code></pre>
+    </div>
+</div>
+<div data-block-id="e842342dc0ef31b59a6aff1510393219" style="min-width: 30px; min-height: 30px; width: 563px; height: 300px; left: 55px; top: 366px;" data-block-type="code" class="sl-block">
+    <div data-highlight-theme="solarized-dark" style="z-index: 14; border-style: solid; border-width: 1px; border-color: rgb(0, 216, 255);" class="sl-block-content">
+        <pre><code>&lt;div&gt;
+  &lt;SearchBar filterText={this.state.filterText}
+             inStockOnly={this.state.inStockOnly}
+             onUserInput={this.handleUserInput}/&gt;
+  &lt;ProductTable products={this.props.products}
+                filterText={this.state.filterText}
+                inStockOnly={this.state.inStockOnly}&gt;
+    &lt;ProductCategoryRow category={product.category}
+                        key={product.category}/&gt;
+    &lt;ProductRow product={product}
+                key={product.name}/&gt;
+  &lt;/ProductTable&gt;
+&lt;/div&gt;</code></pre>
+    </div>
+</div>
+            </section>
+            <section>
+              <div data-block-id="b097c29d28726b63e47e4e6e6feb7a6a" style="height: auto; width: 865px; left: 48px; top: 0px;" data-block-type="text" class="sl-block">
+    <div style="z-index: 11; color: rgb(0, 216, 255);" data-placeholder-text="Text" data-placeholder-tag="p" class="sl-block-content">
+        <h2>Hierarchie de composants</h2>
+    </div>
+</div>
+<div data-block-id="d375c37ad13397d1166e105b58764b4a" style="min-width: 30px; min-height: 30px; width: 960px; height: 630px; left: 0px; top: 70px;" data-block-type="iframe" class="sl-block">
+    <div style="z-index: 14;" class="sl-block-content">
+        <iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock" mozallowfullscreen="" webkitallowfullscreen="" src="//jsfiddle.net/reactjs/n47gckhr/embedded/result,js,html/" allowfullscreen="" frameborder="0" height="300" width="100%"></iframe>
+    </div>
+</div>
+            </section>
           </section>
           <section class="stack">
             <section>
@@ -1181,18 +1234,75 @@ return notificationComposant;</code></pre>
               </div>
             </section>
           </section>
-          <section>
-            <div style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 180px; top: 0px;" data-block-type="text" class="sl-block">
-              <div style="z-index: 11; color: rgb(0, 216, 255);" class="sl-block-content">
-                <h2>Démo</h2>
+          <section class="stack">
+            <section>
+              <div style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 180px; top: 0px;" data-block-type="text" class="sl-block">
+                <div style="z-index: 11; color: rgb(0, 216, 255);" class="sl-block-content">
+                  <h2>Démo #1</h2>
+                </div>
               </div>
-            </div>
 
-					<div data-block-id="f98006d481f7665b0d659bf1f20154e9" style="min-width: 30px; min-height: 30px; width: 960px; height: 630px; left: 0px; top: 70px;" data-block-type="iframe" class="sl-block">
-				    <div style="z-index: 12;" class="sl-block-content">
-							<iframe width="100%" height="300" src="//jsfiddle.net/ecgusn6h/5/embedded/result,js,html/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
-				    </div>
-					</div>
+    					<div data-block-id="f98006d481f7665b0d659bf1f20154e9" style="min-width: 30px; min-height: 30px; width: 960px; height: 630px; left: 0px; top: 70px;" data-block-type="iframe" class="sl-block">
+    				    <div style="z-index: 12;" class="sl-block-content">
+                  <iframe width="100%" height="300" src="//jsfiddle.net/ecgusn6h/8/embedded/result,js,html/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+    				    </div>
+    					</div>
+            </section>
+
+            <section>
+              <div data-block-id="39b8e775c42ff4ac7cb0ba468cf14408" style="height: auto; width: 600px; left: 180px; top: 0px;" data-block-type="text" class="sl-block">
+                  <div style="z-index: 11; color: rgb(0, 216, 255);" data-placeholder-text="Text" data-placeholder-tag="p" class="sl-block-content">
+                      <h2>Démo #1</h2>
+                  </div>
+              </div>
+              <div data-block-id="e26dd27c5eb2787d680992b7be8632c6" style="min-width: 30px; min-height: 30px; width: 960px; height: 630px; left: 0px; top: 70px;" data-block-type="code" class="sl-block">
+                  <div data-highlight-theme="solarized-dark" style="z-index: 12; border-style: solid; border-width: 1px; border-color: rgb(0, 216, 255);" class="sl-block-content">
+                      <pre><code>&lt;h3&gt;Lecteur vidéo&lt;/h3&gt;
+
+&lt;div class="videoplayerContainer"
+     data-src="http://v2v.cc/~j/theora_testsuite/320x240.ogg"&gt;
+
+  &lt;div class="videoplayer" data-reactid=".0"&gt;
+    &lt;div data-reactid=".0.0"&gt;
+      &lt;video src="http://v2v.cc/~j/theora_testsuite/320x240.ogg" data-reactid=".0.0.0"&gt;
+      &lt;/video&gt;
+    &lt;/div&gt;
+    &lt;div class="btn-group" data-reactid=".0.1"&gt;
+      &lt;button class="btn btn-default" data-reactid=".0.1.0"&gt;Lire&lt;/button&gt;
+      &lt;button class="btn btn-default active" data-reactid=".0.1.1"&gt;Pause&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="videoplayerContainer"
+     data-src="http://techslides.com/demos/sample-videos/small.ogv"&gt;
+
+  &lt;div class="videoplayer" data-reactid=".1"&gt;
+    &lt;div data-reactid=".1.0"&gt;
+      &lt;video src="http://techslides.com/demos/sample-videos/small.ogv" data-reactid=".1.0.0"&gt;
+      &lt;/video&gt;
+    &lt;/div&gt;
+    &lt;div class="btn-group" data-reactid=".1.1"&gt;
+      &lt;button class="btn btn-default" data-reactid=".1.1.0"&gt;Lire&lt;/button&gt;
+      &lt;button class="btn btn-default active" data-reactid=".1.1.1"&gt;Pause&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                  </div>
+              </div>
+            </section>
+            <section>
+              <div style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 180px; top: 0px;" data-block-type="text" class="sl-block">
+                <div style="z-index: 11; color: rgb(0, 216, 255);" class="sl-block-content">
+                  <h2>Démo #2</h2>
+                </div>
+              </div>
+              <div data-block-id="c6b7125a124bde9f45b08bd9518a4e17" style="width: 960px; height: 630px; left: 0px; top: 70px;" data-block-type="iframe" class="sl-block">
+                  <div style="z-index: 12;" class="sl-block-content">
+                      <iframe width="100%" height="300" src="//jsfiddle.net/tnnx71ms/1/embedded/result,js,html/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+                  </div>
+              </div>
+            </section>
           </section>
           <section class="stack">
             <section>
@@ -1390,81 +1500,76 @@ return notificationComposant;</code></pre>
                   <h2>Les ressources</h2>
                 </div>
               </div>
-              <div style="height: auto; min-width: 30px; min-height: 30px; width: 960px; left: 0px; top: 140px;" data-block-type="text" class="sl-block">
-                <div data-has-line-height="" style="z-index: 12; line-height: 1.898;" class="sl-block-content">
-                  <ul>
-                    <li>React Blog, par
 
-                      <span style="color:#00d8ff">Facebook team
-                      </span>
-                      <a href="http://facebook.github.io/react/blog/" target="_blank">
-                        <span style="color:#00d8ff">➥</span>
-                      </a>
-                    </li>
-                    <li>Introduction à ReactJS, par
+              <div data-block-id="82e9dddf2d87b2fecb847e1872cc0e8d" style="height: auto; min-width: 30px; min-height: 30px; width: 960px; left: 0px; top: 74px;" data-block-type="text" class="sl-block">
+                  <div data-has-line-height="" style="z-index: 12; line-height: 1.898;" data-placeholder-text="Text" data-placeholder-tag="p" class="sl-block-content">
+                      <ul>
+                          <li>React Blog, par
 
-                      <span style="color:#00d8ff">putaindecode.fr
-                      </span>
-                      <a href="http://putaindecode.fr/posts/js/introduction-a-reactjs/" target="_blank">
-                        <span style="color:#00d8ff">➥</span>
-                      </a>
-                    </li>
-                    <li>ReactJS, par
+                              <span style="color:#00d8ff">Facebook team </span>
+                              <a href="http://facebook.github.io/react/blog/" target="_blank">
+                                  <span style="color:#00d8ff">➥</span>
+                              </a>
+                          </li>
+                          <li>Introduction à ReactJS, par
 
-                      <span style="color:#00d8ff">Adam Solove
-                      </span>
-                      <a href="http://vimeo.com/92687646" target="_blank">
-                        <span style="color:#00d8ff">➥</span>
-                      </a>
-                    </li>
-                    <li>Decomplexifying Code with React, par
+                              <span style="color:#00d8ff">putaindecode.fr </span>
+                              <a href="http://putaindecode.fr/posts/js/introduction-a-reactjs/" target="_blank">
+                                  <span style="color:#00d8ff">➥</span>
+                              </a>
+                          </li>
+                          <li>ReactJS, par
 
-                      <span style="color:#00d8ff">Steven Luscher</span>
-                      <a href="https://www.youtube.com/watch?v=rI0GQc__0SM" target="_blank">
-                        <span style="color:#00d8ff">➥</span>
-                      </a>
-                    </li>
-                    <li>Removing User Interface Complexity, or Why React is Awesome, par
+                              <span style="color:#00d8ff">Adam Solove </span>
+                              <a href="http://vimeo.com/92687646" target="_blank">
+                                  <span style="color:#00d8ff">➥</span>
+                              </a>
+                          </li>
+                          <li>Decomplexifying Code with React, par
 
-                      <span style="color:#00d8ff">James Long
-                      </span>
-                      <a href="http://jlongster.com/Removing-User-Interface-Complexity,-or-Why-React-is-Awesome" target="_blank">
-                        <span style="color:#00d8ff">➥</span>
-                      </a>
-                    </li>
-                    <li>React.js Internals, par
+                              <span style="color:#00d8ff">Steven Luscher</span>
+                              <a href="https://www.youtube.com/watch?v=rI0GQc__0SM" target="_blank">
+                                  <span style="color:#00d8ff">➥</span>
+                              </a>
+                          </li>
+                          <li>Removing User Interface Complexity, or Why React is Awesome, par
 
-                      <span style="color:#00d8ff">Nick Niemeir
-                      </span>
-                      <a href="http://youtu.be/FAgSdSikSCc" target="_blank">
-                        <span style="color:#00d8ff">➥</span>
-                      </a>
-                    </li>
-                    <li>React's diff algorithm, par
+                              <span style="color:#00d8ff">James Long </span>
+                              <a href="http://jlongster.com/Removing-User-Interface-Complexity,-or-Why-React-is-Awesome" target="_blank">
+                                  <span style="color:#00d8ff">➥</span>
+                              </a>
+                          </li>
+                          <li>React.js Internals, par
 
-                      <span style="color:#00d8ff">Christopher Chedeau
-                      </span>
-                      <a href="http://calendar.perfplanet.com/2013/diff/" target="_blank">
-                        <span style="color:#00d8ff">➥</span>
-                      </a>
-                    </li>
-                    <li>React.js: Secrets of the Virtual DOM, par
+                              <span style="color:#00d8ff">Nick Niemeir </span>
+                              <a href="http://youtu.be/FAgSdSikSCc" target="_blank">
+                                  <span style="color:#00d8ff">➥</span>
+                              </a>
+                          </li>
+                          <li>React's diff algorithm, par
 
-                      <span style="color:#00d8ff">Pete Hunt
-                      </span>
-                      <a href="http://www.futureinsights.com/home/reactjs-secrets-of-the-virtual-dom.html" target="_blank">
-                        <span style="color:#00d8ff">➥</span>
-                      </a>
-                    </li>
-                    <li>Learn Raw React ‒ no JSX, no Flux, no ES6, no Webpack…
-                      
-                      <span style="color:#00d8ff">James K Nelson</span>
-                      <a href="http://jamesknelson.com/learn-raw-react-no-jsx-flux-es6-webpack/" target="_blank">
-                        <span style="color:#00d8ff">➥</span>
-                      </a>
-                  </ul>
-                </div>
-              </div>
+                              <span style="color:#00d8ff">Christopher Chedeau </span>
+                              <a href="http://calendar.perfplanet.com/2013/diff/" target="_blank">
+                                  <span style="color:#00d8ff">➥</span>
+                              </a>
+                          </li>
+                          <li>React.js: Secrets of the Virtual DOM, par
+
+                              <span style="color:#00d8ff">Pete Hunt </span>
+                              <a href="http://www.futureinsights.com/home/reactjs-secrets-of-the-virtual-dom.html" target="_blank">
+                                  <span style="color:#00d8ff">➥</span>
+                              </a>
+                          </li>
+                          <li>Learn Raw React ‒ no JSX, no Flux, no ES6, no Webpack…
+
+
+                              <span style="color:#00d8ff">James K Nelson</span>
+                              <a href="http://jamesknelson.com/learn-raw-react-no-jsx-flux-es6-webpack/" target="_blank">
+                                  <span style="color:#00d8ff">➥</span>
+                              </a>
+                          </li>
+                      </ul>
+                  </div>
             </section>
             <section>
               <div style="min-width: 30px; min-height: 30px; width: 606.772px; height: 420px; left: 177px; top: 70px;" data-block-type="image" class="sl-block">
