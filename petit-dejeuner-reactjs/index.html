@@ -1234,6 +1234,90 @@ return notificationComposant;</code></pre>
               </div>
             </section>
           </section>
+
+
+          <section class="stack">
+              <section>
+                  <div style="height: auto; width: 960px; left: 0px; top: 0px;" data-block-type="text" class="sl-block">
+                      <div style="z-index: 11; color: rgb(0, 216, 255);" class="sl-block-content">
+                          <h2>Questions</h2>
+                      </div>
+                  </div>
+                  <div style="height: auto; min-width: 30px; min-height: 30px; width: 880px; left: 40px; top: 121px;" data-block-type="text" class="sl-block">
+                      <div style="z-index: 12; color: rgb(0, 216, 255);" class="sl-block-content">
+                          <p>React propose une programmation déclarative ou impérative ?</p>
+                      </div>
+                  </div>
+                  <div style="height: auto; min-width: 30px; min-height: 30px; width: 800px; left: 80px; top: 195px;" data-block-type="text" class="sl-block">
+                      <div data-fragment-index="0" style="z-index: 13;" class="sl-block-content fragment fade-down">
+                          <p>Déclarative car elle permet d'exprimer ce qu'on veut (What). Une programmation impérative permet d'exprimer comment on veut quelque chose (How).</p>
+                      </div>
+                  </div>
+                  <div style="min-width: 30px; min-height: 30px; width: 721px; height: 380px; left: 120px; top: 320px;" data-block-type="code" class="sl-block">
+                      <div data-fragment-index="0" data-highlight-theme="solarized-dark" style="z-index: 14;" class="sl-block-content fragment fade-down">
+                          <pre class="javascript">
+                              <code>var numbers = [8,13,21,34,55];
+
+// Imperative (How)
+function imperative_sum(numbers) {
+  var total = 0;
+  for(var i = 0 ; i &lt; numbers.length ; i++) {
+    total += numbers[i];
+  }
+  return total;
+}
+
+// Declarative (What)
+function declarative_sum(numbers) {
+  return numbers.reduce(function(sum, current) {
+    return sum + current;
+  }, 0);
+}
+          </code></pre>
+                      </div>
+                  </div>
+              </section>
+              <section>
+                  <div style="height: auto; width: 960px; left: 0px; top: 0px;" data-block-type="text" class="sl-block">
+                      <div style="z-index: 11; color: rgb(0, 216, 255);" class="sl-block-content">
+                          <h2>Questions</h2>
+                      </div>
+                  </div>
+                  <div style="height: auto; width: 960px; left: 0px; top: 121px;" data-block-type="text" class="sl-block">
+                      <div dir="ui" style="z-index: 12; color: rgb(0, 216, 255);" class="sl-block-content">
+                          <p>React permet d'écrire du code HTML dans du code JavaScript via JSX ?</p>
+                      </div>
+                  </div>
+                  <div style="height: auto; width: 800px; left: 80px; top: 195px;" data-block-type="text" class="sl-block">
+                      <div data-fragment-index="0" style="z-index: 13;" class="sl-block-content fragment fade-down">
+                          <p>Faux. Il n'y a pas d'HTML dans React. JSX est une écriture simplifiée de la fonction React.createElement en mode canada dry. C'est du sucre syntaxique.</p>
+                      </div>
+                  </div>
+                  <div style="width: 721px; height: 350px; left: 120px; top: 350px;" data-block-type="code" class="sl-block">
+                      <div data-fragment-index="0" data-highlight-theme="solarized-dark" style="z-index: 14;" class="sl-block-content fragment fade-down">
+                          <pre class="javascript">
+                              <code>function numberItem(number) {
+  return (&lt;li&gt;{number}&lt;/li&gt;);
+}
+
+function numbersList(numbers) {
+  var list = numbers.map(numberItem);
+  return (&lt;ul&gt;{list}&lt;/ul&gt;);
+}
+
+function numberItemNoJSX(number) {
+  return React.createElement("li",null, number);
+}
+
+function numbersListNoJSX(numbers) {
+  var list = numbers.map(numberItemNoJSX);
+  return React.createElement("ul", list);
+}</code></pre>
+                      </div>
+                  </div>
+              </section>
+          </section>
+
           <section class="stack">
             <section>
               <div style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 180px; top: 0px;" data-block-type="text" class="sl-block">
